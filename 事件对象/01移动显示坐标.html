@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动显示坐标</title>
+    <style type="text/css">
+         #area{
+             border: 1px solid black;
+              height: 200px;
+              width: 400px;
+             margin-bottom: 10px;
+          }
+         #show{
+             border: 1px solid black;
+             height: 200px;
+             width: 400px;
+
+         }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+         var area =document .getElementById("area");
+         var show =document .getElementById("show");
+         //onmousemove,该事件将在鼠标移动时触发
+            //事件对象-当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参 传递进响应函数
+            //在事件对象中封装了当前事件的一切信息，比如鼠标位移坐标，滚轮滑动
+            area.onmousemove =function (event) {
+           //clientX，clientY,可以获取鼠标移动的XY坐标
+                //在IE8及以下版本中响应函数被触发时，浏览器不会传递事件对象，它们是将事件对象作为window对象的属性保存的
+                event = event || window.event;
+                var X =event.clientX;
+                var Y =event.clientY;
+                //alert("X="+X+",Y="+Y)
+                show.innerHTML="X="+X+",Y="+Y
+            }
+
+        };
+    </script>
+</head>
+<body>
+  <div id ="area"></div>
+  <div id ="show"></div>
+</body>
+</html>

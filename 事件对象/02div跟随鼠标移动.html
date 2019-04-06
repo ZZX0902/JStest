@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div跟随鼠标移动</title>
+    <style type="text/css">
+          #box1{
+              height: 100px;
+              width:100px;
+              background: red;
+              /*想让box1移动,开启绝对定位
+               */
+             position:absolute;
+          }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+             //使div跟随鼠标移动
+             //获取box1
+            var box1 = document.getElementById("box1");
+            //绑定鼠标移动事件
+            //只绑定给box1鼠标一移出div就会失效，所以要绑定全局
+             document.onmousemove = function(event){
+                //兼容问题
+                event = event ||window.event;
+                //获取坐标
+                 //clientX,clientY是代表可视界面的坐标，而div偏移量是相对于整个页面的，所以要用 pageX
+                 //但是IE8不支持page，所以通过获取滚动条高度通过加上滚动条高度，定义div的Y
+                 //chrome认为滚动条属于body，ie和火狐认为属于全局，写适配
+                 var st = document.body.scrollTop || document.documentElement.scrollTop;
+                 var X = event.clientX;
+                 var Y = event.clientY;
+                //设置div偏移量
+                box1.style.left = X + "px";
+                box1.style.top = Y + st + "px";
+
+
+            };
+
+        }
+
+
+    </script>
+</head>
+<body style="height:3000px;" >
+<div id="box1"></div>
+</body>
+</html>
