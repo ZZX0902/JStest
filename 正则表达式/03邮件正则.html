@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件正则</title>
+</head>
+<script type="text/javascript">
+    //电子邮件    hello   .nihao            @  163        .com            .cn
+    //任意的字母数字下划线 .任意的字母数字下划线 @ 任意字母数字 .任意字母（2-5位）.任意字母（2-5位）
+    // \w{3,} 任意字母下划线三个字以上 (\.\w+)*     *代表可有可无，+代表可以出现一次以上 @ 【A-z 0-9]+  (\.[A-z]{2,5}){1,2}
+    var reg =/^\w{3,}(\.\w+)*@[A-z 0-9]+(\.[A-z]{2,5}){1,2}$/    //^.....$  是为了表示字符串是个完整的邮件，整个判断，要不判断到。com就结束判断
+    var email ="abc@abc.com.123";
+    console.log(reg.test(email));
+</script>
+<body>
+
+</body>
+</html>
